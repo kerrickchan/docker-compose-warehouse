@@ -14,6 +14,8 @@ services:
       - "9005:9005"
     volumes:
       - clickhouse_data:/var/lib/clickhouse
+      - clickhouse_log:/var/log/clickhouse-server
 
 volumes:
   clickhouse_data:
+  clickhouse_log:
