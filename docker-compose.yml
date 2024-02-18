@@ -1,0 +1,21 @@
+version: "3.8"
+
+name: warehouse
+
+services:
+  clickhouse-server:
+    extends:
+      file: docker-compose-clickhouse.yml
+      service: clickhouse-server
+
+  metabase:
+    extends:
+      file: docker-compose-metabase.yml
+      service: metabase
+    volumes:
+      - metabase_data:/metabase-data
+      - ./mb/plugins/ch.jar:/plugins/clickhouse.jar
+
+volumes:
+  clickhouse_data:
+  metabase_data:

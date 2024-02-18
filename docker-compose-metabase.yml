@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  metabase:
+    image: metabase/metabase:v0.48.6
+    restart: unless-stopped
+    environment:
+      - MB_DB_FILE=/metabase-data/metabase.db
+    ports:
+      - "3000:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - metabase_data:/metabase-data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  metabase_data:
+    driver: local
