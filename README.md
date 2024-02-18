@@ -11,3 +11,10 @@ Tested in Mac
 ```bash
 make docker
 ```
+
+
+# Note
+
+In The Metabase Connection
+
+since under docker container, the metabase of hostname would be `host.docker.internal`
